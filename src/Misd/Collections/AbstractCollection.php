@@ -36,6 +36,18 @@ abstract class AbstractCollection implements CollectionInterface
     /**
      * {@inheritdoc}
      */
+    public function __construct($elements = array())
+    {
+        if ($elements instanceof CollectionInterface) {
+            $this->elements = $elements->toArray();
+        } else {
+            $this->elements = array_values($elements);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function add($element)
     {
         throw new UnsupportedOperationException();
