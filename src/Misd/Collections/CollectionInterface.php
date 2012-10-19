@@ -11,6 +11,7 @@
 
 namespace Misd\Collections;
 
+use Countable, ArrayAccess, IteratorAggregate;
 use UnexpectedValueException;
 use Misd\Collections\Exception\NullPointerException,
     Misd\Collections\Exception\UnsupportedOperationException;
@@ -23,7 +24,7 @@ use Misd\Collections\Exception\NullPointerException,
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */
-interface CollectionInterface
+interface CollectionInterface extends Countable, ArrayAccess, IteratorAggregate
 {
     /**
      * Constructor.
