@@ -11,6 +11,7 @@
 
 namespace Misd\Collections;
 
+use UnexpectedValueException;
 use Misd\Collections\Exception\NullPointerException,
     Misd\Collections\Exception\UnsupportedOperationException;
 
@@ -42,6 +43,7 @@ interface CollectionInterface
      *
      * @throws NullPointerException          If the element is null and the collection does not permit null elements
      *                                       (optional).
+     * @throws UnexpectedValueException      If the element is incompatible with this collection (optional).
      * @throws UnsupportedOperationException If the `add` operation is not supported by this collection.
      *
      * @see allAll
@@ -59,6 +61,8 @@ interface CollectionInterface
      *
      * @throws NullPointerException          If one or more of the elements is null and this collection does not permit
      *                                       null elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the collection
+     *                                       (optional).
      * @throws UnsupportedOperationException If the `addAll` operation is not supported by this collection.
      *
      * @see add
@@ -99,6 +103,7 @@ interface CollectionInterface
      *
      * @throws NullPointerException          If the element is null and this collection does not permit null elements
      *                                       (optional).
+     * @throws UnexpectedValueException      If the element is incompatible with this collection (optional).
      * @throws UnsupportedOperationException If the `remove` operation is not supported by this collection.
      *
      * @see removeAll
@@ -116,6 +121,8 @@ interface CollectionInterface
      *
      * @throws NullPointerException          If one or more of the elements is null and this collection does not permit
      *                                       null elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the collection
+     *                                       (optional).
      * @throws UnsupportedOperationException If the `retainAll` operation is not supported by this collection.
      *
      * @see remove
@@ -135,6 +142,8 @@ interface CollectionInterface
      *
      * @throws NullPointerException          If one or more of the elements is null and this collection does not permit
      *                                       null elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the collection
+     *                                       (optional).
      * @throws UnsupportedOperationException If the `retainAll` operation is not supported by this collection.
      *
      * @see remove, removeAll
