@@ -11,7 +11,8 @@
 
 namespace Misd\Collections;
 
-use Misd\Collections\Exception\UnsupportedOperationException;
+use Misd\Collections\Exception\NullPointerException,
+    Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
  * Collection.
@@ -39,6 +40,8 @@ interface CollectionInterface
      *
      * @return CollectionInterface A reference to the collection.
      *
+     * @throws NullPointerException          If the element is null and the collection does not permit null elements
+     *                                       (optional).
      * @throws UnsupportedOperationException If the `add` operation is not supported by this collection.
      *
      * @see allAll
@@ -54,6 +57,8 @@ interface CollectionInterface
      *
      * @return CollectionInterface A reference to the collection.
      *
+     * @throws NullPointerException          If one or more of the elements is null and this collection does not permit
+     *                                       null elements (optional).
      * @throws UnsupportedOperationException If the `addAll` operation is not supported by this collection.
      *
      * @see add
@@ -92,6 +97,8 @@ interface CollectionInterface
      *
      * @return CollectionInterface A reference to the collection.
      *
+     * @throws NullPointerException          If the element is null and this collection does not permit null elements
+     *                                       (optional).
      * @throws UnsupportedOperationException If the `remove` operation is not supported by this collection.
      *
      * @see removeAll
@@ -107,6 +114,8 @@ interface CollectionInterface
      *
      * @return CollectionInterface A reference to the collection.
      *
+     * @throws NullPointerException          If one or more of the elements is null and this collection does not permit
+     *                                       null elements (optional).
      * @throws UnsupportedOperationException If the `retainAll` operation is not supported by this collection.
      *
      * @see remove
@@ -124,6 +133,8 @@ interface CollectionInterface
      *
      * @return CollectionInterface A reference to the collection.
      *
+     * @throws NullPointerException          If one or more of the elements is null and this collection does not permit
+     *                                       null elements (optional).
      * @throws UnsupportedOperationException If the `retainAll` operation is not supported by this collection.
      *
      * @see remove, removeAll
