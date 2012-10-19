@@ -9,7 +9,8 @@
  * file that was distributed with this source code.
  */
 
-use Misd\Collections\CollectionInterface;
+namespace Misd\Collections;
+
 use Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
