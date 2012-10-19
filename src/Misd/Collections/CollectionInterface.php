@@ -11,6 +11,8 @@
 
 namespace Misd\Collections;
 
+use Misd\Collections\Exception\UnsupportedOperationException;
+
 /**
  * Collection.
  *
@@ -37,6 +39,8 @@ interface CollectionInterface
      *
      * @return CollectionInterface A reference to the collection.
      *
+     * @throws UnsupportedOperationException If the `add` operation is not supported by this collection.
+     *
      * @see allAll
      */
     public function add($element);
@@ -49,6 +53,8 @@ interface CollectionInterface
      * @param CollectionInterface|array $elements Elements to add to the collection.
      *
      * @return CollectionInterface A reference to the collection.
+     *
+     * @throws UnsupportedOperationException If the `addAll` operation is not supported by this collection.
      *
      * @see add
      */
@@ -86,6 +92,8 @@ interface CollectionInterface
      *
      * @return CollectionInterface A reference to the collection.
      *
+     * @throws UnsupportedOperationException If the `remove` operation is not supported by this collection.
+     *
      * @see removeAll
      */
     public function remove($element);
@@ -98,6 +106,8 @@ interface CollectionInterface
      * @param CollectionInterface|array $elements Elements to be removed from this collection, if present.
      *
      * @return CollectionInterface A reference to the collection.
+     *
+     * @throws UnsupportedOperationException If the `retainAll` operation is not supported by this collection.
      *
      * @see remove
      */
@@ -114,6 +124,8 @@ interface CollectionInterface
      *
      * @return CollectionInterface A reference to the collection.
      *
+     * @throws UnsupportedOperationException If the `retainAll` operation is not supported by this collection.
+     *
      * @see remove, removeAll
      */
     public function retainAll($elements);
@@ -124,6 +136,8 @@ interface CollectionInterface
      * This is an optional operation.
      *
      * @return CollectionInterface A reference to the collection.
+     *
+     * @throws UnsupportedOperationException If the `clear` operation is not supported by this collection.
      */
     public function clear();
 
