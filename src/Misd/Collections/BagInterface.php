@@ -35,6 +35,8 @@ interface BagInterface extends CollectionInterface
     /**
      * Adds copies of the element to the bag.
      *
+     * This is an optional operation.
+     *
      * @param mixed $element Element to add.
      * @param int   $copies  Number of copies to add.
      *
@@ -99,6 +101,8 @@ interface BagInterface extends CollectionInterface
     /**
      * Removes occurrences of the given element from the bag.
      *
+     * This is an optional operation.
+     *
      * @param mixed $element Element to remove.
      * @param int   $copies  Number of copies to remove.
      *
@@ -113,6 +117,8 @@ interface BagInterface extends CollectionInterface
 
     /**
      * Removes all occurrences of the given element from the bag.
+     *
+     * This is an optional operation.
      *
      * @param mixed $element Element to remove.
      *
