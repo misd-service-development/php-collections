@@ -84,7 +84,7 @@ abstract class AbstractMap implements MapInterface
         } elseif (is_int($key)) {
             return $key;
         } else {
-            return (string)$key;
+            return (string) $key;
         }
     }
 
