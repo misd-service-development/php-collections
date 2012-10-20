@@ -44,6 +44,8 @@ interface BagInterface extends CollectionInterface
      *                                       (optional).
      * @throws UnexpectedValueException      If the element is incompatible with this bag (optional).
      * @throws UnsupportedOperationException If the `addCopies` operation is not supported by this bag.
+     *
+     * @see setCopies
      */
     public function addCopies($element, $copies);
 
@@ -53,6 +55,26 @@ interface BagInterface extends CollectionInterface
      * @return BagInterface A reference to the bag.
      */
     public function addAll($elements);
+
+    /**
+     * Set the number of occurrences (cardinality) of the element in the
+     * bag. Setting it to 0 will remove the element from the bag.
+     *
+     * This is an optional operation.
+     *
+     * @param mixed $element Element to set.
+     * @param int   $copies  Number of copies.
+     *
+     * @return BagInterface A reference to the bag.
+     *
+     * @throws NullPointerException          If the element is null and this bag does not permit null elements
+     *                                       (optional).
+     * @throws UnexpectedValueException      If the element is incompatible with this bag (optional).
+     * @throws UnsupportedOperationException If the `setCopies` operation is not supported by this bag.
+     *
+     * @see addCopies
+     */
+    public function setCopies($element, $copies);
 
     /**
      * Returns the number of occurrences (cardinality) of the element in the
