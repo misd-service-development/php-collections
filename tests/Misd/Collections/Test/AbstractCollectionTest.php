@@ -129,4 +129,13 @@ class AbstractCollectionTest extends PHPUnit_Framework_TestCase
         $collection = $this->getMockForAbstractClass('Misd\Collections\AbstractCollection', array(array('one', 'two')));
         $this->assertFalse($collection->isEmpty());
     }
+
+    /**
+     * @covers \Misd\Collections\AbstractCollection::getIterator
+     */
+    public function testGetIterator()
+    {
+        $collection = $this->getMockForAbstractClass('Misd\Collections\AbstractCollection');
+        $this->assertInstanceOf('Traversable', $collection->getIterator());
+    }
 }
