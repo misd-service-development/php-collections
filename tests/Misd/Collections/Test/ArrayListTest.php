@@ -89,7 +89,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(
             'Misd\Collections\ListInterface',
             $list->addAll(array('five')),
-            '->add() returns a reference to the list'
+            '->addAll() returns a reference to the list'
         );
     }
 
