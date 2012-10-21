@@ -27,6 +27,11 @@ abstract class AbstractSet extends AbstractCollection implements SetInterface
     /**
      * {@inheritdoc}
      */
+    protected $elements;
+
+    /**
+     * {@inheritdoc}
+     */
     public function __construct($elements = array())
     {
         if ($elements instanceof CollectionInterface) {
