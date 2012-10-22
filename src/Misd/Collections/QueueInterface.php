@@ -13,6 +13,13 @@ namespace Misd\Collections;
 
 use UnderflowException;
 
+/**
+ * Queue.
+ *
+ * A collection designed for holding elements prior to processing.
+ *
+ * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
+ */
 interface QueueInterface extends CollectionInterface
 {
     /**
