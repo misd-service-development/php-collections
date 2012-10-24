@@ -32,11 +32,14 @@ class AbstractMapTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructorWithAssociativeArray()
     {
+        $object = new TestObject();
+
         $map = $this->getMockForAbstractClass(
             'Misd\Collections\AbstractMap',
-            array(array('one', 'two' => 'two'))
+            array(array(1, 'two' => 2, 'object' => $object))
         );
-        $this->assertEquals(array(0 => 'one', 1 => 'two'), $map->values()->toArray());
+        $this->assertEquals(array(0, 'two', 'object'), $map->keySet()->toArray());
+        $this->assertEquals(array(1, 2, $object), $map->values()->toArray());
     }
 
     /**
