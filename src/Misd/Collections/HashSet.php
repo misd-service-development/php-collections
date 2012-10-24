@@ -106,7 +106,7 @@ class HashSet extends AbstractSet
      */
     public function clear()
     {
-        $this->elements = new HashSet();
+        $this->elements->clear();
 
         return $this;
     }
