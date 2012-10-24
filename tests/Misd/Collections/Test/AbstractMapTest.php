@@ -14,7 +14,8 @@ namespace Misd\Collections\Test;
 use ReflectionMethod, DateTime;
 use PHPUnit_Framework_TestCase;
 use Misd\Collections\Test\Fixtures\TestObject;
-use Misd\Collections\ArrayList;
+use Misd\Collections\ArrayList,
+    Misd\Collections\HashMap;
 
 class AbstractMapTest extends PHPUnit_Framework_TestCase
 {
@@ -40,6 +41,21 @@ class AbstractMapTest extends PHPUnit_Framework_TestCase
         );
         $this->assertEquals(array(0, 'two', 'object'), $map->keySet()->toArray());
         $this->assertEquals(array(1, 2, $object), $map->values()->toArray());
+    }
+
+    /**
+     * @covers \Misd\Collections\AbstractMap::__construct
+     */
+    public function testConstructorWithMap()
+    {
+        $object = new TestObject();
+
+        $hashMap = new HashMap(array('one' => 1, 'two' => 2));
+        $hashMap->put($object, 'object');
+
+        $map = $this->getMockForAbstractClass('Misd\Collections\AbstractMap', array($hashMap));
+        $this->assertEquals(array('one', 'two', $object), $map->keySet()->toArray());
+        $this->assertEquals(array(1, 2, 'object'), $map->values()->toArray());
     }
 
     /**
