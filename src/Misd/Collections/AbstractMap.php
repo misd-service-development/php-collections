@@ -203,7 +203,7 @@ abstract class AbstractMap implements MapInterface
      */
     public function keySet()
     {
-        // TODO
+        return new HashSet($this->keys);
     }
 
     /**
