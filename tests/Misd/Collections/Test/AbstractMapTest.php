@@ -261,6 +261,21 @@ class AbstractMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \Misd\Collections\AbstractMap::keySet
+     */
+    public function testKeySet()
+    {
+        $object = new TestObject();
+        $map = $this->getMockForAbstractClass(
+            'Misd\Collections\AbstractMap',
+            array(array('one' => 1, 'two' => 'two', 2 => $object))
+        );
+
+        $this->assertInstanceOf('Misd\Collections\SetInterface', $map->keySet());
+        $this->assertEquals(array('one', 'two', 2), $map->keySet()->toArray());
+    }
+
+    /**
      * @covers \Misd\Collections\AbstractMap::values
      */
     public function testValues()
