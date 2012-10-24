@@ -163,6 +163,13 @@ interface CollectionInterface extends Countable, ArrayAccess, IteratorAggregate
     public function clear();
 
     /**
+     * Returns the number of elements in the collection.
+     *
+     * @return int Number of elements in the collection.
+     */
+    public function count();
+
+    /**
      * Returns `true` if this collection contains no elements.
      *
      * @return bool `true` if this collection contains no elements, otherwise `false`.

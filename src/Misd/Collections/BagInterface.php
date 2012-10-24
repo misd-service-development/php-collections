@@ -26,9 +26,19 @@ use Misd\Collections\Exception\NullPointerException,
 interface BagInterface extends CollectionInterface
 {
     /**
-     * {@inheritdoc}
+     * Adds a copy of the element to the bag.
+     *
+     * This is an optional operation.
+     *
+     * @param mixed $element Element to add to the bag.
      *
      * @return BagInterface A reference to the bag.
+     *
+     * @throws NullPointerException          If the element is null and the bag does not permit null elements (optional).
+     * @throws UnexpectedValueException      If the element is incompatible with the bag (optional).
+     * @throws UnsupportedOperationException If the `add` operation is not supported by the bag.
+     *
+     * @see allAll
      */
     public function add($element);
 
@@ -52,9 +62,20 @@ interface BagInterface extends CollectionInterface
     public function addCopies($element, $copies);
 
     /**
-     * {@inheritdoc}
+     * Adds all of the elements to the bag.
+     *
+     * This is an optional operation.
+     *
+     * @param CollectionInterface|array $elements Elements to add to the bag.
      *
      * @return BagInterface A reference to the bag.
+     *
+     * @throws NullPointerException          If one or more of the elements is null and the bag does not permit null
+     *                                       elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the bag (optional).
+     * @throws UnsupportedOperationException If the `addAll` operation is not supported by the bag.
+     *
+     * @see add
      */
     public function addAll($elements);
 
@@ -92,9 +113,43 @@ interface BagInterface extends CollectionInterface
     public function getCopies($element);
 
     /**
-     * {@inheritdoc}
+     * Returns `true` if the bag contains at least one copy of the specified
+     * element.
+     *
+     * @param mixed $element Element to test.
+     *
+     * @return bool `true` if the bag contains the specified element, otherwise `false`.
+     *
+     * @see containsAll
+     */
+    public function contains($element);
+
+    /**
+     * Returns `true` if the bag contains at least one copy of all of the
+     * specified elements.
+     *
+     * @param CollectionInterface|array $elements Elements to test.
+     *
+     * @return bool `true` if the bag contains all of the specified elements, otherwise `false`.
+     *
+     * @see contains
+     */
+    public function containsAll($elements);
+
+    /**
+     * Removes a single copy of the element from the bag, if it is present.
+     *
+     * This is an optional operation.
+     *
+     * @param mixed $element Element to be removed from the bag.
      *
      * @return BagInterface A reference to the bag.
+     *
+     * @throws NullPointerException          If the element is null and the bag does not permit null elements (optional).
+     * @throws UnexpectedValueException      If the element is incompatible with the bag (optional).
+     * @throws UnsupportedOperationException If the `remove` operation is not supported by the bag.
+     *
+     * @see removeAll
      */
     public function remove($element);
 
@@ -132,23 +187,72 @@ interface BagInterface extends CollectionInterface
     public function removeAllCopies($element);
 
     /**
-     * {@inheritdoc}
+     * Removes all occurrences of the elements from the bag, if they are present.
+     *
+     * This is an optional operation.
+     *
+     * @param CollectionInterface|array $elements Elements to be removed from the bag, if present.
      *
      * @return BagInterface A reference to the bag.
+     *
+     * @throws NullPointerException          If one or more of the elements is null and the bag does not permit null
+     *                                       elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the bag (optional).
+     * @throws UnsupportedOperationException If the `retainAll` operation is not supported by the bag.
+     *
+     * @see remove
      */
     public function removeAll($elements);
 
     /**
-     * {@inheritdoc}
+     * Retains only the elements in the bag that are contained in the specified
+     * collection. In other words, removes from the bag all of its elements
+     * that are not contained in the specified collection.
+     *
+     * This is an optional operation.
+     *
+     * @param CollectionInterface|array $elements Elements to be retained in the bag.
      *
      * @return BagInterface A reference to the bag.
+     *
+     * @throws NullPointerException          If one or more of the elements is null and the bag does not permit null
+     *                                       elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the bag (optional).
+     * @throws UnsupportedOperationException If the `retainAll` operation is not supported by the bag.
+     *
+     * @see remove, removeAll
+     */
+    public function retainAll($elements);
+
+    /**
+     * Removes all elements from the bag.
+     *
+     * This is an optional operation.
+     *
+     * @return BagInterface A reference to the bag.
+     *
+     * @throws UnsupportedOperationException If the `clear` operation is not supported by the bag.
      */
     public function clear();
 
     /**
-     * {@inheritdoc}
+     * Returns the total number of items in the bag.
      *
-     * @return BagInterface A reference to the bag.
+     * @return int Total number of items in the bag.
      */
-    public function retainAll($elements);
+    public function count();
+
+    /**
+     * Returns `true` if the bag contains no elements.
+     *
+     * @return bool `true` if the bag contains no elements, otherwise `false`.
+     */
+    public function isEmpty();
+
+    /**
+     * Returns an array containing all of the elements in the bag.
+     *
+     * @return array An array containing all of the elements in the bag.
+     */
+    public function toArray();
 }

@@ -29,16 +29,37 @@ use Misd\Collections\Exception\NullPointerException,
 interface ListInterface extends CollectionInterface
 {
     /**
-     * {@inheritdoc}
+     * Adds the element to the end of the list.
+     *
+     * This is an optional operation.
+     *
+     * @param mixed $element Element to add to the list.
      *
      * @return ListInterface A reference to the list.
+     *
+     * @throws NullPointerException          If the element is null and the list does not permit null elements (optional).
+     * @throws UnexpectedValueException      If the element is incompatible with the list (optional).
+     * @throws UnsupportedOperationException If the `add` operation is not supported by this list.
+     *
+     * @see allAll
      */
     public function add($element);
 
     /**
-     * {@inheritdoc}
+     * Adds elements to the end of the list.
+     *
+     * This is an optional operation.
+     *
+     * @param CollectionInterface|array $elements Elements to add to the list.
      *
      * @return ListInterface A reference to the list.
+     *
+     * @throws NullPointerException          If one or more of the elements is null and the list does not permit null
+     *                                       elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the list (optional).
+     * @throws UnsupportedOperationException If the `addAll` operation is not supported by the list.
+     *
+     * @see add
      */
     public function addAll($elements);
 
@@ -117,6 +138,28 @@ interface ListInterface extends CollectionInterface
     public function get($index);
 
     /**
+     * Returns `true` if the list contains the specified element.
+     *
+     * @param mixed $element Element to test.
+     *
+     * @return bool `true` if the list contains the specified element, otherwise `false`.
+     *
+     * @see containsAll
+     */
+    public function contains($element);
+
+    /**
+     * Returns `true` if the list contains all of the specified elements.
+     *
+     * @param CollectionInterface|array $elements Elements to test.
+     *
+     * @return bool `true` if the list contains all of the specified elements, otherwise `false`.
+     *
+     * @see contains
+     */
+    public function containsAll($elements);
+
+    /**
      * Removes the element at the specified position in this list. Shifts any
      * subsequent elements to the left (subtracts one from their indices).
      *
@@ -132,32 +175,91 @@ interface ListInterface extends CollectionInterface
     public function drop($index);
 
     /**
-     * {@inheritdoc}
+     * Removes the first instance of the element from the list, if it is present.
      *
-     * @return ListInterface A reference to the list.
+     * This is an optional operation.
+     *
+     * @param mixed $element Element to be removed from the list.
+     *
+     * @return ListInterface A reference to the list..
+     *
+     * @throws NullPointerException          If the element is null and the list does not permit null elements (optional).
+     * @throws UnexpectedValueException      If the element is incompatible with the list (optional).
+     * @throws UnsupportedOperationException If the `remove` operation is not supported by the list.
+     *
+     * @see removeAll
      */
     public function remove($element);
 
     /**
-     * {@inheritdoc}
+     * Removes all instances of the elements from the list, if they are present.
+     *
+     * This is an optional operation.
+     *
+     * @param CollectionInterface|array $elements Elements to be removed from the list, if present.
      *
      * @return ListInterface A reference to the list.
+     *
+     * @throws NullPointerException          If one or more of the elements is null and the list does not permit null
+     *                                       elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the list (optional).
+     * @throws UnsupportedOperationException If the `retainAll` operation is not supported by the list.
+     *
+     * @see remove
      */
     public function removeAll($elements);
 
     /**
-     * {@inheritdoc}
+     * Retains only the elements in the list that are contained in the specified
+     * collection. In other words, removes from the list all of its elements
+     * that are not contained in the specified collection.
+     *
+     * This is an optional operation.
+     *
+     * @param CollectionInterface|array $elements Elements to be retained in the list.
      *
      * @return ListInterface A reference to the list.
+     *
+     * @throws NullPointerException          If one or more of the elements is null and the list does not permit null
+     *                                       elements (optional).
+     * @throws UnexpectedValueException      If one or more of the elements is incompatible with the list (optional).
+     * @throws UnsupportedOperationException If the `retainAll` operation is not supported by the list.
+     *
+     * @see remove, removeAll
      */
     public function retainAll($elements);
 
     /**
-     * {@inheritdoc}
+     * Removes all elements from the list.
+     *
+     * This is an optional operation.
      *
      * @return ListInterface A reference to the list.
+     *
+     * @throws UnsupportedOperationException If the `clear` operation is not supported by the list.
      */
     public function clear();
+
+    /**
+     * Returns the number of elements in the list.
+     *
+     * @return int Number of elements in the list.
+     */
+    public function count();
+
+    /**
+     * Returns `true` if the list contains no elements.
+     *
+     * @return bool `true` if the list contains no elements, otherwise `false`.
+     */
+    public function isEmpty();
+
+    /**
+     * Returns an array containing all of the elements in the list.
+     *
+     * @return array An array containing all of the elements in the list.
+     */
+    public function toArray();
 
     /**
      * Returns the index of the first occurrence of the specified element in

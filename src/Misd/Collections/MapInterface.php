@@ -181,6 +181,13 @@ interface MapInterface extends Countable, ArrayAccess, IteratorAggregate
     public function containsValues($values);
 
     /**
+     * Returns the number of mappings in the map.
+     *
+     * @return int Number of mapping in the map.
+     */
+    public function count();
+
+    /**
      * Returns `true` if this map contains no key-value mappings.
      *
      * @return bool `true` if this map contains no key-value mappings, otherwise `false`.
