@@ -12,6 +12,7 @@
 namespace Misd\Collections\Test;
 
 use PHPUnit_Framework_TestCase;
+use Misd\Collections\ArrayList;
 
 /**
  * Abstract collection test.
@@ -27,6 +28,16 @@ class AbstractCollectionTest extends PHPUnit_Framework_TestCase
     public function testConstructorWithArray()
     {
         $collection = $this->getMockForAbstractClass('Misd\Collections\AbstractCollection', array(array('one', 'two')));
+        $this->assertEquals(array('one', 'two'), $collection->toArray());
+    }
+
+    /**
+     * @covers \Misd\Collections\AbstractCollection::__construct
+     */
+    public function testConstructorWithCollection()
+    {
+        $collection2 = new ArrayList(array('one', 'two'));
+        $collection = $this->getMockForAbstractClass('Misd\Collections\AbstractCollection', array($collection2));
         $this->assertEquals(array('one', 'two'), $collection->toArray());
     }
 
