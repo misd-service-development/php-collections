@@ -116,7 +116,14 @@ class HashSet extends AbstractSet
      */
     public function retainAll($elements)
     {
-        // TODO
+        if ($elements instanceof CollectionInterface) {
+            $elements = $elements->toArray();
+        }
+
+        $elements = $this->elements->values()->retainAll($elements);
+
+        $this->clear()->addAll($elements);
+
         return $this;
     }
 

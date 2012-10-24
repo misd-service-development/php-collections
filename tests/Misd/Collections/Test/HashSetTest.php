@@ -260,7 +260,16 @@ class HashSetTest extends PHPUnit_Framework_TestCase
      */
     public function testRetainAllWithArray()
     {
-        // TODO
+        $object1 = new \Misd\Collections\Test\Fixtures\TestObject();
+        $object1->firstValue = 'one';
+        $object2 = new \Misd\Collections\Test\Fixtures\TestObject();
+        $object2->secondValue = 'two';
+
+        $set = new HashSet(array('one', 'two', 'three', 'four', $object1, $object2));
+
+        $set->retainAll(array($object2, 'four', 'two'));
+
+        $this->assertEquals(array('two', 'four', $object2), $set->toArray());
     }
 
     /**
@@ -268,7 +277,17 @@ class HashSetTest extends PHPUnit_Framework_TestCase
      */
     public function testRetainAllWithSet()
     {
-        // TODO
+        $object1 = new \Misd\Collections\Test\Fixtures\TestObject();
+        $object1->firstValue = 'one';
+        $object2 = new \Misd\Collections\Test\Fixtures\TestObject();
+        $object2->secondValue = 'two';
+
+        $set = new HashSet(array('one', 'two', 'three', 'four', $object1, $object2));
+        $set2 = new HashSet(array($object2, 'four', 'two'));
+
+        $set->retainAll($set2);
+
+        $this->assertEquals(array('two', 'four', $object2), $set->toArray());
     }
 
     /**
