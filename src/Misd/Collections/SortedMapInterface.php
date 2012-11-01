@@ -11,6 +11,7 @@
 
 namespace Misd\Collections;
 
+use UnderflowException;
 use Misd\Collections\Comparison\ComparatorInterface;
 
 /**
@@ -40,4 +41,22 @@ interface SortedMapInterface extends MapInterface
      *                                  natural ordering of its keys.
      */
     public function comparator();
+
+    /**
+     * Returns the first (lowest) key currently in this map.
+     *
+     * @return mixed The first (lowest) key currently in this map.
+     *
+     * @throws UnderflowException If this map is empty.
+     */
+    public function firstKey();
+
+    /**
+     * Returns the last (highest) key currently in this map.
+     *
+     * @return mixed The last (highest) key currently in this map.
+     *
+     * @throws UnderflowException If this map is empty.
+     */
+    public function lastKey();
 }

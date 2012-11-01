@@ -11,6 +11,7 @@
 
 namespace Misd\Collections;
 
+use UnderflowException;
 use Misd\Collections\Comparison\ComparatorInterface;
 
 /**
@@ -86,5 +87,33 @@ class TreeMap extends HashMap implements SortedMapInterface
         $this->values = $map;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function firstKey()
+    {
+        if ($this->isEmpty()) {
+            throw new UnderflowException();
+        }
+
+        $keys = array_values($this->keys);
+
+        return reset($keys);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function lastKey()
+    {
+        if ($this->isEmpty()) {
+            throw new UnderflowException();
+        }
+
+        $keys = array_values($this->keys);
+
+        return end($keys);
     }
 }
