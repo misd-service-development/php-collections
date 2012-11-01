@@ -11,6 +11,7 @@
 
 namespace Misd\Collections;
 
+use UnderflowException;
 use Misd\Collections\Comparison\ComparatorInterface;
 
 /**
@@ -40,4 +41,22 @@ interface SortedSetInterface extends SetInterface
      *                                  the natural ordering of its elements
      */
     public function comparator();
+
+    /**
+     * Returns the first (lowest) element currently in this set.
+     *
+     * @return mixed The first (lowest) element currently in this set.
+     *
+     * @throws UnderflowException If this set is empty.
+     */
+    public function first();
+
+    /**
+     * Returns the last (highest) element currently in this set.
+     *
+     * @return mixed The last (highest) element currently in this set.
+     *
+     * @throws UnderflowException If this set is empty.
+     */
+    public function last();
 }

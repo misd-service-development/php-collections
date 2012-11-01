@@ -11,6 +11,7 @@
 
 namespace Misd\Collections;
 
+use UnderflowException;
 use Misd\Collections\Comparison\ComparatorInterface;
 
 /**
@@ -42,5 +43,29 @@ class TreeSet extends HashSet implements SortedSetInterface
     public function comparator()
     {
         return $this->elements->comparator();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function first()
+    {
+        if ($this->isEmpty()) {
+            throw new UnderflowException();
+        }
+
+        return $this->elements->firstKey();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function last()
+    {
+        if ($this->isEmpty()) {
+            throw new UnderflowException();
+        }
+
+        return $this->elements->lastKey();
     }
 }
