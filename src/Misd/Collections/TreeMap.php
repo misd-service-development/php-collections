@@ -34,6 +34,8 @@ class TreeMap extends HashMap implements SortedMapInterface
      */
     public function __construct($map = array(), ComparatorInterface $comparator = null)
     {
+        parent::__construct();
+
         $this->putAll($map);
         $this->comparator = $comparator;
     }
