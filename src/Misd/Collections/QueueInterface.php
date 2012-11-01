@@ -17,8 +17,6 @@ use Misd\Collections\Exception\NullPointerException,
     Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Queue.
- *
  * A collection designed for holding elements prior to processing.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>

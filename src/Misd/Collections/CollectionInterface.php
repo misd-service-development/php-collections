@@ -17,10 +17,14 @@ use Misd\Collections\Exception\NullPointerException,
     Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Collection.
+ * A collection represents a group of objects, known as its elements.
  *
- * The root interface in the collection hierarchy. A collection represents a
- * group of objects, known as its elements.
+ * This is the root interface in the collection hierarchy. Some collections
+ * allow duplicate elements and others do not. Some are ordered and others
+ * unordered. The library does not provide any direct implementations of this
+ * interface: it provides implementations of more specific sub-interfaces like
+ * `SetInterface` and `ListInterface`. This interface is typically used to pass
+ * collections around and manipulate them where maximum generality is desired.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */

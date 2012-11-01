@@ -16,8 +16,6 @@ use Misd\Collections\Exception\NullPointerException,
     Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Set.
- *
  * A collection that contains no duplicate elements.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>

@@ -17,8 +17,6 @@ use Misd\Collections\Exception\NullPointerException,
     Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Map.
- *
  * An object that maps keys to values. A map cannot contain duplicate keys;
  * each key can map to at most one value.
  *

@@ -16,8 +16,6 @@ use Misd\Collections\Exception\NullPointerException,
     Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Bag.
- *
  * A set in which elements are allowed to appear more than once (also known as
  * a multiset).
  *
