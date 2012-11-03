@@ -15,9 +15,10 @@ use UnderflowException;
 use Misd\Collections\Comparison\ComparatorInterface;
 
 /**
- * A set that further provides a total ordering on its elements. The elements
- * are ordered using their natural ordering, or by a comparator typically
- * provided at sorted set creation time.
+ * A set that further provides a total ordering on its elements.
+ *
+ * The elements are ordered using their natural ordering, or by a comparator
+ * typically provided at sorted set creation time.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */

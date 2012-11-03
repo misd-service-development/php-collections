@@ -15,8 +15,6 @@ use OutOfBoundsException;
 use Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Abstract list.
- *
  * This provides a skeletal implementation of {@link ListInterface}, to
  * minimize the effort required to implement this interface.
  *

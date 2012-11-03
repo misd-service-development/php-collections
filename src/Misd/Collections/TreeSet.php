@@ -15,9 +15,10 @@ use UnderflowException;
 use Misd\Collections\Comparison\ComparatorInterface;
 
 /**
- * Tree-map-based implementation of {@link SortedSetInterface}. The elements
- * are ordered using their natural ordering, or by a Comparator provided at set
- * creation time, depending on which constructor is used.
+ * Tree-map-based implementation of {@link SortedSetInterface}.
+ *
+ * The elements are ordered using their natural ordering, or by a Comparator
+ * provided at set creation time.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */

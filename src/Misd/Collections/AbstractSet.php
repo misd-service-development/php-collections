@@ -12,8 +12,6 @@
 namespace Misd\Collections;
 
 /**
- * Abstract set.
- *
  * This provides a skeletal implementation of {@link SetInterface}, to
  * minimize the effort required to implement this interface.
  *

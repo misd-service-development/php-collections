@@ -12,12 +12,12 @@
 namespace Misd\Collections;
 
 /**
- * Hash set.
+ * Hash-map-based implementation of {@link SetInterface}.
  *
- * Hash-map-based implementation of {@link SetInterface}. It makes no
- * guarantees as to the iteration order of the set; in particular, it does not
- * guarantee that the order will remain constant over time. This class permits
- * the null element.
+ * It makes no guarantees as to the iteration order of the set; in particular,
+ * it does not guarantee that the order will remain constant over time.
+ *
+ * This class permits the null element.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */

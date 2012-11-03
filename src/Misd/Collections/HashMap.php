@@ -12,9 +12,10 @@
 namespace Misd\Collections;
 
 /**
- * Hash-table-based implementation of the Map interface. This implementation
- * provides all of the optional map operations, and permits `null` values and
- * the `null` key.
+ * Hash-table-based implementation of {@link MapInterface}.
+ *
+ * This implementation provides all of the optional map operations, and permits
+ * `null` values and the `null` key.
  *
  * This class makes no guarantees as to the order of the map; in particular, it
  * does not guarantee that the order will remain constant over time.

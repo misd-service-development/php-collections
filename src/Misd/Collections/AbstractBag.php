@@ -14,8 +14,6 @@ namespace Misd\Collections;
 use Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Abstract bag.
- *
  * This provides a skeletal implementation of {@link BagInterface}, to
  * minimize the effort required to implement this interface.
  *

@@ -15,9 +15,10 @@ use UnderflowException;
 use Misd\Collections\Comparison\ComparatorInterface;
 
 /**
- * A map that further provides a total ordering on its keys. The map is ordered
- * according to the natural ordering of its keys, or by a comparator typically
- * provided at sorted map creation time.
+ * A map that further provides a total ordering on its keys.
+ *
+ * The map is ordered according to the natural ordering of its keys, or by a
+ * comparator typically provided at sorted map creation time.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */

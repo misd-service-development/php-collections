@@ -14,10 +14,10 @@ namespace Misd\Collections;
 use OutOfBoundsException;
 
 /**
- * Array list.
+ * Resizable-array implementation of {@link ListInterface}.
  *
- * Resizable-array implementation of {@link ListInterface}. Implements all
- * optional list operations, and permits all elements, including `null`.
+ * Implements all optional list operations, and permits all elements, including
+ * `null`.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */

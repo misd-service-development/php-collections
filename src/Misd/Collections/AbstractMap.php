@@ -14,8 +14,6 @@ namespace Misd\Collections;
 use Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Abstract map.
- *
  * This provides a skeletal implementation of {@link MapInterface}, to
  * minimize the effort required to implement this interface.
  *

@@ -14,8 +14,6 @@ namespace Misd\Collections;
 use Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * Abstract collection.
- *
  * This provides a skeletal implementation of {@link CollectionInterface}, to
  * minimize the effort required to implement this interface.
  *

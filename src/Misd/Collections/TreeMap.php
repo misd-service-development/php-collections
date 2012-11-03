@@ -16,9 +16,10 @@ use Misd\Collections\Comparison\ComparableInterface,
     Misd\Collections\Comparison\ComparatorInterface;
 
 /**
- * The map is sorted according to the natural ordering of its keys, or by a
- * Comparator provided at map creation time, depending on which constructor is
- * used.
+ * Hash-map-based implementation of {@link SortedMapInterface}
+ *
+ * The keys are ordered using their natural ordering, or by a Comparator
+ * provided at map creation time.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */

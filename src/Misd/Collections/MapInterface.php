@@ -17,8 +17,9 @@ use Misd\Collections\Exception\NullPointerException,
     Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
- * An object that maps keys to values. A map cannot contain duplicate keys;
- * each key can map to at most one value.
+ * An object that maps keys to values.
+ *
+ * A map cannot contain duplicate keys; each key can map to at most one value.
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */
