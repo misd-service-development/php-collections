@@ -12,7 +12,8 @@
 namespace Misd\Collections;
 
 use UnderflowException;
-use Misd\Collections\Comparison\ComparatorInterface;
+use Misd\Collections\Comparison\ComparableInterface,
+    Misd\Collections\Comparison\ComparatorInterface;
 
 /**
  * The map is sorted according to the natural ordering of its keys, or by a
@@ -59,17 +60,35 @@ class TreeMap extends HashMap implements SortedMapInterface
         parent::put($key, $value);
 
         if (null === $this->comparator) {
-            $scalarKeys = array();
+            $comparableKeys = array();
             $otherKeys = array();
             foreach ($this->keys as $hash => $key) {
-                if (is_scalar($key)) {
-                    $scalarKeys[$hash] = $key;
+                if (is_scalar($key) || $key instanceof ComparableInterface) {
+                    $comparableKeys[$hash] = $key;
                 } else {
                     $otherKeys[$hash] = $key;
                 }
             }
-            natsort($scalarKeys);
-            $this->keys = $scalarKeys + $otherKeys;
+            uasort(
+                $comparableKeys,
+                function ($key1, $key2) {
+                    if ($key1 instanceof ComparableInterface) {
+                        return $key1->compareTo($key2);
+                    } elseif ($key2 instanceof ComparableInterface) {
+                        switch ($key2->compareTo($key1)) {
+                            case 1:
+                                return -1;
+                            case -1:
+                                return 1;
+                            default:
+                                return 0;
+                        }
+                    } else {
+                        return strnatcasecmp($key1, $key2);
+                    }
+                }
+            );
+            $this->keys = $comparableKeys + $otherKeys;
         } else {
             $comparator = $this->comparator;
             usort(
