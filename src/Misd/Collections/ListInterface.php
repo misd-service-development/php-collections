@@ -296,4 +296,26 @@ interface ListInterface extends CollectionInterface
      * @throws NullPointerException If the element is null and this list does not permit null elements (optional).
      */
     public function lastIndexOf($element);
+
+    /**
+     * Returns a view of the portion of this list between the specified
+     * `fromIndex`, inclusive, and `toIndex`, exclusive. (If `fromIndex` and
+     * `toIndex` are equal, the returned list is empty.)
+     *
+     * The returned list is backed by this list, so changes in the returned
+     * list are reflected in this list, and vice-versa. The returned list
+     * supports all of the optional list operations supported by this list.
+     *
+     * Due to the potential complications in its implementation, this is an
+     * optional operation.
+     *
+     * @param int $fromIndex Low endpoint (inclusive) of the sub-list.
+     * @param int $toIndex   High endpoint (exclusive) of the sub-list.
+     *
+     * @return ListInterface A view of the specified range within this list.
+     *
+     * @throws OutOfBoundsException          If one of the indices is out of range.
+     * @throws UnsupportedOperationException If the `subList` operation is not supported by the list.
+     */
+    public function subList($fromIndex, $toIndex);
 }

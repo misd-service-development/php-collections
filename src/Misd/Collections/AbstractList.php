@@ -88,4 +88,12 @@ abstract class AbstractList extends AbstractCollection implements ListInterface
 
         return false === $key ? null : $key;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function subList($fromIndex, $toIndex)
+    {
+        throw new UnsupportedOperationException();
+    }
 }
