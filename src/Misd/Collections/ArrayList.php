@@ -24,9 +24,13 @@ use OutOfBoundsException;
 class ArrayList extends AbstractList
 {
     /**
-     * {@inheritdoc}
+     * Adds the element to the end of the list.
      *
-     * @return ListInterface A reference to the list.
+     * @param mixed $element Element to add to the list.
+     *
+     * @return ArrayList A reference to the list.
+     *
+     * @see addAll
      */
     public function add($element)
     {
@@ -36,9 +40,13 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Adds elements to the end of the list.
      *
-     * @return ListInterface A reference to the list.
+     * @param CollectionInterface|array $elements Elements to add to the list.
+     *
+     * @return ArrayList A reference to the list.
+     *
+     * @see add
      */
     public function addAll($elements)
     {
@@ -54,9 +62,19 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Inserts the element at the specified position in this list.
      *
-     * @return ListInterface A reference to the list.
+     * Shifts the element currently at that position (if any) and any subsequent
+     * elements to the right (adds one to their indices).
+     *
+     * @param int   $index   Index to insert at.
+     * @param mixed $element Element to insert.
+     *
+     * @return ArrayList A reference to the list.
+     *
+     * @throws OutOfBoundsException If the index is out of range.
+     *
+     * @see insertAll, add
      */
     public function insert($index, $element)
     {
@@ -70,9 +88,21 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Inserts all of the elements into this list at the specified position.
      *
-     * @return ListInterface A reference to the list.
+     * Shifts the element currently at that position (if any) and any
+     * subsequent elements to the right (increases their indices). The new
+     * elements will appear in this list in the order that they are returned by
+     * the specified collection's iterator.
+     *
+     * @param int                       $index    Index at insert at.
+     * @param CollectionInterface|array $elements Elements to insert.
+     *
+     * @return ArrayList A reference to the list.
+     *
+     * @throws OutOfBoundsException If the index is out of range.
+     *
+     * @see insert, addAll
      */
     public function insertAll($index, $elements)
     {
@@ -92,9 +122,15 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Replaces the element at the specified position in this list with the
+     * specified element.
      *
-     * @return ListInterface A reference to the list.
+     * @param int   $index   Index of the element to replace.
+     * @param mixed $element Element to replace.
+     *
+     * @return ArrayList A reference to the list.
+     *
+     * @throws OutOfBoundsException If the index is out of range.
      */
     public function set($index, $element)
     {
@@ -108,9 +144,13 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Removes the first instance of the element from the list, if it is present.
      *
-     * @return ListInterface A reference to the list.
+     * @param mixed $element Element to be removed from the list.
+     *
+     * @return ArrayList A reference to the list.
+     *
+     * @see removeAll
      */
     public function remove($element)
     {
@@ -125,9 +165,13 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Removes all instances of the elements from the list, if they are present.
      *
-     * @return ListInterface A reference to the list.
+     * @param CollectionInterface|array $elements Elements to be removed from the list, if present.
+     *
+     * @return ArrayList A reference to the list.
+     *
+     * @see remove
      */
     public function removeAll($elements)
     {
@@ -159,9 +203,16 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Removes the element at the specified position in this list.
      *
-     * @return ListInterface A reference to the list.
+     * Shifts any subsequent elements to the left (subtracts one from their
+     * indices).
+     *
+     * @param int $index Index of the element to be removed.
+     *
+     * @return ArrayList A reference to the list.
+     *
+     * @throws OutOfBoundsException If the index is out of range.
      */
     public function drop($index)
     {
@@ -176,9 +227,9 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Removes all elements from the list.
      *
-     * @return ListInterface A reference to the list.
+     * @return ArrayList A reference to the list.
      */
     public function clear()
     {
@@ -188,9 +239,15 @@ class ArrayList extends AbstractList
     }
 
     /**
-     * {@inheritdoc}
+     * Retains only the elements in the list that are contained in the specified
+     * collection.
      *
-     * @return ListInterface A reference to the list.
+     * In other words, removes from the list all of its elements that are not
+     * contained in the specified collection.
+     *
+     * @param CollectionInterface|array $elements Elements to be retained in the list.
+     *
+     * @return ArrayList A reference to the list.
      */
     public function retainAll($elements)
     {
