@@ -23,6 +23,9 @@ use Misd\Collections\Exception\NullPointerException,
  * element is inserted. The user can access elements by their integer index
  * (position in the list), and search for elements in the list.
  *
+ * Unlike sets, lists typically allow duplicate elements. They typically allow
+ * multiple null elements if they allow null elements at all.
+ *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */
 interface ListInterface extends CollectionInterface
@@ -63,9 +66,10 @@ interface ListInterface extends CollectionInterface
     public function addAll($elements);
 
     /**
-     * Inserts the element at the specified position in this list. Shifts the
-     * element currently at that position (if any) and any subsequent elements
-     * to the right (adds one to their indices).
+     * Inserts the element at the specified position in this list.
+     *
+     * Shifts the element currently at that position (if any) and any
+     * subsequent elements to the right (adds one to their indices).
      *
      * This is an optional operation.
      *
@@ -80,12 +84,13 @@ interface ListInterface extends CollectionInterface
      * @throws UnexpectedValueException      If the element is incompatible with this collection (optional).
      * @throws UnsupportedOperationException If the `insert` operation is not supported by this list.
      *
-     * @see add
+     * @see insertAll, add
      */
     public function insert($index, $element);
 
     /**
      * Inserts all of the elements into this list at the specified position.
+     *
      * Shifts the element currently at that position (if any) and any
      * subsequent elements to the right (increases their indices). The new
      * elements will appear in this list in the order that they are returned by
@@ -103,6 +108,8 @@ interface ListInterface extends CollectionInterface
      * @throws OutOfBoundsException          If the index is out of range.
      * @throws UnexpectedValueException      If an element is incompatible with this collection (optional).
      * @throws UnsupportedOperationException If the `insertAll` operation is not supported by this list.
+     *
+     * @see insert, addAll
      */
     public function insertAll($index, $elements);
 
@@ -159,8 +166,10 @@ interface ListInterface extends CollectionInterface
     public function containsAll($elements);
 
     /**
-     * Removes the element at the specified position in this list. Shifts any
-     * subsequent elements to the left (subtracts one from their indices).
+     * Removes the element at the specified position in this list.
+     *
+     * Shifts any subsequent elements to the left (subtracts one from their
+     * indices).
      *
      * This is an optional operation.
      *
@@ -180,7 +189,7 @@ interface ListInterface extends CollectionInterface
      *
      * @param mixed $element Element to be removed from the list.
      *
-     * @return ListInterface A reference to the list..
+     * @return ListInterface A reference to the list.
      *
      * @throws NullPointerException          If the element is null and the list does not permit null elements (optional).
      * @throws UnexpectedValueException      If the element is incompatible with the list (optional).
