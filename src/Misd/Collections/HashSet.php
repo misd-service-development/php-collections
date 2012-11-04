@@ -39,6 +39,8 @@ class HashSet extends AbstractSet
 
     /**
      * {@inheritdoc}
+     *
+     * @return HashSet A reference to the set.
      */
     public function add($element)
     {
@@ -49,6 +51,8 @@ class HashSet extends AbstractSet
 
     /**
      * {@inheritdoc}
+     *
+     * @return HashSet A reference to the set.
      */
     public function addAll($elements)
     {
@@ -83,6 +87,8 @@ class HashSet extends AbstractSet
 
     /**
      * {@inheritdoc}
+     *
+     * @return HashSet A reference to the set.
      */
     public function remove($element)
     {
@@ -93,6 +99,8 @@ class HashSet extends AbstractSet
 
     /**
      * {@inheritdoc}
+     *
+     * @return HashSet A reference to the set.
      */
     public function removeAll($elements)
     {
@@ -103,6 +111,8 @@ class HashSet extends AbstractSet
 
     /**
      * {@inheritdoc}
+     *
+     * @return HashSet A reference to the set.
      */
     public function clear()
     {
@@ -113,6 +123,8 @@ class HashSet extends AbstractSet
 
     /**
      * {@inheritdoc}
+     *
+     * @return HashSet A reference to the set.
      */
     public function retainAll($elements)
     {
