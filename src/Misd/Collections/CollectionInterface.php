@@ -136,8 +136,10 @@ interface CollectionInterface extends Countable, ArrayAccess, IteratorAggregate
 
     /**
      * Retains only the elements in this collection that are contained in the
-     * specified collection. In other words, removes from this collection all
-     * of its elements that are not contained in the specified collection.
+     * specified collection.
+     *
+     * In other words, removes from this collection all of its elements that
+     * are not contained in the specified collection.
      *
      * This is an optional operation.
      *

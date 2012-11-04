@@ -135,8 +135,10 @@ interface QueueInterface extends CollectionInterface
 
     /**
      * Retains only the elements in the queue that are contained in the specified
-     * collection. In other words, removes from the queue all of its elements
-     * that are not contained in the specified collection.
+     * collection.
+     *
+     * In other words, removes from the queue all of its elements that are not
+     * contained in the specified collection.
      *
      * This is an optional operation.
      *
