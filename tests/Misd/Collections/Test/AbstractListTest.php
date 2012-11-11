@@ -140,4 +140,18 @@ class AbstractListTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(3, $list->lastIndexOf($objectOne));
         $this->assertEquals(null, $list->lastIndexOf($objectTwo));
     }
+
+    /**
+     * @expectedException \Misd\Collections\Exception\UnsupportedOperationException
+     * @covers \Misd\Collections\AbstractList::subList
+     */
+    public function testSubList()
+    {
+        $list = $this->getMockForAbstractClass(
+            'Misd\Collections\AbstractList',
+            array(array('one', 'two', 'two'))
+        );
+
+        $list->subList(0, 2);
+    }
 }
