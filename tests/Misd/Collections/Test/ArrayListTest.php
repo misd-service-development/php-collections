@@ -127,7 +127,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
     {
         $list = new ArrayList(array('one', 'two', 'three', 'four'));
 
-        $list->insert(4, 'five');
+        $list->insert(5, 'five');
     }
 
     /**
@@ -169,7 +169,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
     {
         $list = new ArrayList(array('one', 'two', 'three', 'four'));
 
-        $list->insertAll(4, array('five', 'six'));
+        $list->insertAll(5, array('five', 'six'));
     }
 
     /**

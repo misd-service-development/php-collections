@@ -78,7 +78,7 @@ class ArrayList extends AbstractList
      */
     public function insert($index, $element)
     {
-        if (false === array_key_exists($index, $this->elements)) {
+        if (0 < $index && $this->count() < $index) {
             throw new OutOfBoundsException();
         }
 
@@ -106,7 +106,7 @@ class ArrayList extends AbstractList
      */
     public function insertAll($index, $elements)
     {
-        if (false === array_key_exists($index, $this->elements)) {
+        if (0 < $index && $this->count() < $index) {
             throw new OutOfBoundsException();
         }
 
