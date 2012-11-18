@@ -87,7 +87,7 @@ class AbstractMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException  \Misd\Collections\Exception\UnsupportedOperationException
+     * @expectedException \Misd\Collections\Exception\UnsupportedOperationException
      * @covers \Misd\Collections\AbstractMap::putAll
      */
     public function testPutAll()
@@ -121,7 +121,7 @@ class AbstractMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException  \Misd\Collections\Exception\UnsupportedOperationException
+     * @expectedException \Misd\Collections\Exception\UnsupportedOperationException
      * @covers \Misd\Collections\AbstractMap::remove
      */
     public function testRemove()
@@ -131,7 +131,7 @@ class AbstractMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException  \Misd\Collections\Exception\UnsupportedOperationException
+     * @expectedException \Misd\Collections\Exception\UnsupportedOperationException
      * @covers \Misd\Collections\AbstractMap::removeAll
      */
     public function testRemoveAll()
@@ -141,7 +141,7 @@ class AbstractMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException  \Misd\Collections\Exception\UnsupportedOperationException
+     * @expectedException \Misd\Collections\Exception\UnsupportedOperationException
      * @covers \Misd\Collections\AbstractMap::clear
      */
     public function testClear()

@@ -120,7 +120,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException  \OutOfBoundsException
+     * @expectedException \OutOfBoundsException
      * @covers \Misd\Collections\ArrayList::insert
      */
     public function testInsertOutOfBoundsException()
