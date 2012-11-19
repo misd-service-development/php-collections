@@ -509,6 +509,21 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \Misd\Collections\SubArrayList::add
+     */
+    public function testSubListAddChaining()
+    {
+        $list = new ArrayList(array('one', 'two', 'three', 'four'));
+        $subList = $list->subList(1, 3);
+
+        $this->assertInstanceOf(
+            'Misd\Collections\ListInterface',
+            $subList->add('test'),
+            '->add() returns a reference to the list'
+        );
+    }
+
+    /**
      * @covers \Misd\Collections\SubArrayList::addAll
      */
     public function testSubListAddAll()
@@ -527,6 +542,21 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
         );
         $this->assertEquals(array('two', 'subSubList', 'three', 'subList'), $subList->toArray());
         $this->assertEquals(array('two', 'subSubList'), $subSubList->toArray());
+    }
+
+    /**
+     * @covers \Misd\Collections\SubArrayList::addAll
+     */
+    public function testSubListAddAllChaining()
+    {
+        $list = new ArrayList(array('one', 'two', 'three', 'four'));
+        $subList = $list->subList(1, 3);
+
+        $this->assertInstanceOf(
+            'Misd\Collections\ListInterface',
+            $subList->addAll(array('test')),
+            '->addAll() returns a reference to the list'
+        );
     }
 
     /**
@@ -552,6 +582,21 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \Misd\Collections\SubArrayList::insert
+     */
+    public function testSubListInsertChaining()
+    {
+        $list = new ArrayList(array('one', 'two', 'three', 'four'));
+        $subList = $list->subList(1, 3);
+
+        $this->assertInstanceOf(
+            'Misd\Collections\ListInterface',
+            $subList->insert(1, 'test'),
+            '->insert() returns a reference to the list'
+        );
+    }
+
+    /**
      * @covers \Misd\Collections\SubArrayList::insertAll
      * @covers \Misd\Collections\ArrayList::insertAll
      */
@@ -574,6 +619,21 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \Misd\Collections\SubArrayList::insertAll
+     */
+    public function testSubListInsertAllChaining()
+    {
+        $list = new ArrayList(array('one', 'two', 'three', 'four'));
+        $subList = $list->subList(1, 3);
+
+        $this->assertInstanceOf(
+            'Misd\Collections\ListInterface',
+            $subList->insertAll(1, array('test')),
+            '->insertAll() returns a reference to the list'
+        );
+    }
+
+    /**
      * @covers \Misd\Collections\SubArrayList::set
      * @covers \Misd\Collections\ArrayList::set
      */
@@ -593,6 +653,21 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
         );
         $this->assertEquals(array('subSubList', 'list', 'subList'), $subList->toArray());
         $this->assertEquals(array('subSubList'), $subSubList->toArray());
+    }
+
+    /**
+     * @covers \Misd\Collections\SubArrayList::set
+     */
+    public function testSubListSetChaining()
+    {
+        $list = new ArrayList(array('one', 'two', 'three', 'four'));
+        $subList = $list->subList(1, 3);
+
+        $this->assertInstanceOf(
+            'Misd\Collections\ListInterface',
+            $subList->set(1, 'test'),
+            '->set() returns a reference to the list'
+        );
     }
 
     /**
@@ -795,6 +870,21 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \Misd\Collections\SubArrayList::drop
+     */
+    public function testSubListDropChaining()
+    {
+        $list = new ArrayList(array('one', 'two', 'three', 'four'));
+        $subList = $list->subList(1, 3);
+
+        $this->assertInstanceOf(
+            'Misd\Collections\ListInterface',
+            $subList->drop(1),
+            '->drop() returns a reference to the list'
+        );
+    }
+
+    /**
      * @covers \Misd\Collections\SubArrayList::clear
      */
     public function testSubListClear()
@@ -835,12 +925,13 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
      */
     public function testSubListClearChaining()
     {
-        $list = new ArrayList(array('one', 'two', 'two'));
+        $list = new ArrayList(array('one', 'two', 'three', 'four'));
+        $subList = $list->subList(1, 3);
 
         $this->assertInstanceOf(
             'Misd\Collections\ListInterface',
-            $list->removeAll(array('two')),
-            '->removeAll() returns a reference to the list'
+            $subList->clear(),
+            '->clear() returns a reference to the list'
         );
     }
 
