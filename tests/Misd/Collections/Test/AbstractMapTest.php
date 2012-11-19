@@ -63,17 +63,67 @@ class AbstractMapTest extends PHPUnit_Framework_TestCase
      */
     public function testHashKey()
     {
-        $method = new \ReflectionMethod('Misd\Collections\AbstractMap', 'hashKey');
-        $method->setAccessible(true);
-        $map = $this->getMockForAbstractClass('Misd\Collections\AbstractMap');
-        $this->assertTrue(is_string($method->invoke($map, 'test')));
-        $this->assertTrue(is_int($method->invoke($map, 1)));
-        $this->assertTrue(is_string($method->invoke($map, new TestObject())));
-        $this->assertTrue(is_string($method->invoke($map, new DateTime())));
-        $this->assertTrue(is_string($method->invoke($map, false)));
-        $this->assertTrue(is_string($method->invoke($map, true)));
-        $this->assertTrue(is_string($method->invoke($map, null)));
-        $this->assertTrue(is_string($method->invoke($map, array('one', 'two'))));
+        $map = new HashMap();
+
+        $dateTime = new DateTime();
+        $object = new TestObject();
+        $callable = function () {
+            return 'test';
+        };
+
+        $map->put('test', 'string');
+        $map->put(1, 'int');
+        $map->put('1', 'int string');
+        $map->put(1.1, 'float');
+        $map->put('1.1', 'float string');
+        $map->put(null, 'null');
+        $map->put(true, 'true');
+        $map->put(false, 'false');
+        $map->put($dateTime, 'dateTime');
+        $map->put($object, 'object');
+        $map->put(array('1'), 'array with string');
+        $map->put(array(1), 'array with int');
+        $map->put(array($dateTime), 'array with object');
+        $map->put($callable, 'callable');
+
+        $this->assertEquals('string', $map->get('test'));
+        $this->assertEquals('int', $map->get(1));
+        $this->assertEquals('int string', $map->get('1'));
+        $this->assertEquals('float', $map->get(1.1));
+        $this->assertEquals('float string', $map->get('1.1'));
+        $this->assertEquals('null', $map->get(null));
+        $this->assertEquals('true', $map->get(true));
+        $this->assertEquals('false', $map->get(false));
+        $this->assertEquals('dateTime', $map->get($dateTime));
+        $this->assertEquals('object', $map->get($object));
+        $this->assertEquals('array with string', $map->get(array('1')));
+        $this->assertEquals('array with int', $map->get(array(1)));
+        $this->assertEquals('array with object', $map->get(array($dateTime)));
+        $this->assertEquals('callable', $map->get($callable));
+    }
+
+    /**
+     * @covers \Misd\Collections\AbstractMap::key
+     */
+    public function testKey()
+    {
+        $map = $this->getMockForAbstractClass('Misd\Collections\AbstractMap', array(array('hash' => 'key')));
+
+        foreach ($map as $hash => $value) {
+            $key = $map->key($hash);
+        }
+
+        $this->assertEquals($key, 'hash');
+    }
+
+    /**
+     * @expectedException \UnexpectedValueException
+     * @covers \Misd\Collections\AbstractMap::key
+     */
+    public function testKeyUnexpectedValueException()
+    {
+        $map = $this->getMockForAbstractClass('Misd\Collections\AbstractMap', array(array('hash' => 'key')));
+        $map->key('not-a-hash');
     }
 
     /**

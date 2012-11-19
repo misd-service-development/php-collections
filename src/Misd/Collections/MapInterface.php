@@ -21,6 +21,15 @@ use Misd\Collections\Exception\NullPointerException,
  *
  * A map cannot contain duplicate keys; each key can map to at most one value.
  *
+ * Due to limitations in PHP, when using the map like an associative array the
+ * key will actually be a hashed form of the key. You will need to use `key()`
+ * to obtain the real key value:
+ *
+ * <code>
+ * foreach ($map as $hash => $value) {
+ *     $key = $map->key($hash);
+ * </code>
+ *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */
 interface MapInterface extends Countable, ArrayAccess, IteratorAggregate
@@ -31,6 +40,17 @@ interface MapInterface extends Countable, ArrayAccess, IteratorAggregate
      * @param MapInterface|array $map Optional initial map.
      */
     public function __construct($map = array());
+
+    /**
+     * Returns the key for its hashed form.
+     *
+     * @param string $hash Hashed key.
+     *
+     * @return mixed Key.
+     *
+     * @throws UnexpectedValueException If the hashed key is not in the map.
+     */
+    public function key($hash);
 
     /**
      * Maps a value to a key. If the map already contains a mapping for the

@@ -11,6 +11,7 @@
 
 namespace Misd\Collections;
 
+use UnexpectedValueException;
 use Misd\Collections\Exception\UnsupportedOperationException;
 
 /**
@@ -19,6 +20,15 @@ use Misd\Collections\Exception\UnsupportedOperationException;
  *
  * This is an immutable map: you must overwrite methods such as `put()`
  * to allow modification.
+ *
+ * Due to limitations in PHP, when using the map like an associative array the
+ * key will actually be a hashed form of the key. You will need to use `key()`
+ * to obtain the real key value:
+ *
+ * <code>
+ * foreach ($map as $hash => $value) {
+ *     $key = $map->key($hash);
+ * </code>
  *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */
@@ -68,22 +78,38 @@ abstract class AbstractMap implements MapInterface
     protected function hashKey($key)
     {
         if ($key instanceof \DateTime) {
-            return '_' . $key->format('c');
+            return md5('_' . $key->format('c'));
         } elseif (is_object($key)) {
-            return '_' . spl_object_hash($key);
+            return spl_object_hash($key);
         } elseif (false === $key) {
-            return '_false';
+            return md5('_false');
         } elseif (true === $key) {
-            return '_true';
+            return md5('_true');
         } elseif (null === $key) {
-            return '_null';
+            return md5('_null');
         } elseif (is_array($key)) {
-            return '_' . md5(json_encode(array_multisort($key)));
+            array_multisort($key);
+
+            return md5(json_encode($key));
         } elseif (is_int($key)) {
-            return $key;
+            return md5('_' . $key);
+        } elseif (is_float($key)) {
+            return md5('_' . $key);
         } else {
-            return (string) $key;
+            return md5($key);
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function key($hash)
+    {
+        if (false === isset($this->keys[$hash])) {
+            throw new UnexpectedValueException();
+        }
+
+        return $this->keys[$hash];
     }
 
     /**

@@ -20,6 +20,15 @@ namespace Misd\Collections;
  * This class makes no guarantees as to the order of the map; in particular, it
  * does not guarantee that the order will remain constant over time.
  *
+ * Due to limitations in PHP, when using the map like an associative array the
+ * key will actually be a hashed form of the key. You will need to use `key()`
+ * to obtain the real key value:
+ *
+ * <code>
+ * foreach ($map as $hash => $value) {
+ *     $key = $map->key($hash);
+ * </code>
+ *
  * @author Chris Wilkinson <chris.wilkinson@admin.cam.ac.uk>
  */
 class HashMap extends AbstractMap
@@ -43,6 +52,9 @@ class HashMap extends AbstractMap
     public function putAll($map)
     {
         foreach ($map as $key => $value) {
+            if ($map instanceof MapInterface) {
+                $key = $map->key($key);
+            }
             $this->put($key, $value);
         }
 
